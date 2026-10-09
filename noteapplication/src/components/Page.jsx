@@ -3,10 +3,20 @@ import React, { useState } from 'react'
 const Page = () => {
 const [heading, setHeading] = useState('')
 const [details, setDetails] = useState('')
+const [note, setNote] = useState([])
 
   function formSubmit (e){
     e.preventDefault()
       console.log("form submited")
+    const copyNote = [...note]
+    copyNote.push({heading,details})
+    setNote(copyNote)
+    console.log(copyNote);
+    console.log(note);
+
+    setHeading('')
+    setDetails('')     
+
   }
   return (
     <div id="main" className='w-full md:flex-row  flex flex-col'>
@@ -31,10 +41,16 @@ const [details, setDetails] = useState('')
 
     <div className='text-amber-500 p-4'>
       <h2  className='text-center font-bold text-2xl'>Your Notes:</h2>
-      <div className='mt-4'>
-        <div className='bg-green-200 py-1 px-2 text-pink-500 h-30 w-25 rounded-2xl'>
+      <div className='mt-4 '>
+        {note.map((elem,idx)=>{
+          return <div key={idx} className='bg-green-200 py-1 px-2 text-pink-500 h-30 w-25 rounded-2xl'>
+            <h4>{elem.heading}</h4>
+            <p>{elem.details}</p>
+          </div>
 
-        </div>
+        })}
+
+        
         
       </div>
     </div>
