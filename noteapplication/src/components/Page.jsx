@@ -7,7 +7,9 @@ const [note, setNote] = useState([])
 
   function formSubmit (e){
     e.preventDefault()
-      console.log("form submited")
+    console.log(e)
+
+    console.log("form submited")
     const copyNote = [...note]
     copyNote.push({heading,details})
     setNote(copyNote)
@@ -16,12 +18,12 @@ const [note, setNote] = useState([])
 
     setHeading('')
     setDetails('')     
-
+    
   }
   return (
     <div id="main" className='w-full md:flex-row  flex flex-col'>
 
-    <form className='flex flex-col  gap-4 p-4 md:w-1/2 h-dvh  text-white' action="" 
+    <form className='flex flex-col  gap-4 p-4 md:w-1/2 min-h-screen  text-white' action="" 
     onSubmit={(e)=>{
       formSubmit(e)
 
@@ -39,13 +41,14 @@ const [note, setNote] = useState([])
       <button className='bg-blue-500 mx-4 rounded-2xl py-1 px-4 '>Add</button>
     </form>
 
-    <div className='text-amber-500 p-4'>
+    <div className='text-amber-500 p-4 md:max-w-1/2'>
       <h2  className='text-center font-bold text-2xl'>Your Notes:</h2>
-      <div className='mt-4 '>
+      <div className='mt-4 flex w-full flex-wrap justify-start items-start gap-2'>
         {note.map((elem,idx)=>{
-          return <div key={idx} className='bg-green-200 py-1 px-2 text-pink-500 h-30 w-25 rounded-2xl'>
-            <h4>{elem.heading}</h4>
-            <p>{elem.details}</p>
+          return <div key={idx} className='bg-green-200 py-2 px-3 pt-5  h-52 w-40 
+          rounded-2xl'>
+            <h3 className='text-2xl bold text-black '>{elem.heading}:</h3>
+            <p className='text-green-500 mt-2'>{elem.details}</p>  
           </div>
 
         })}
