@@ -7,7 +7,10 @@ const [note, setNote] = useState([])
 
   function formSubmit (e){
     e.preventDefault()
-    console.log(e)
+    if(heading.trim() == '' || details.trim() == ''){
+      alert("Please Fill the required filled")
+    }else {
+    
 
     console.log("form submited")
     const copyNote = [...note]
@@ -18,7 +21,7 @@ const [note, setNote] = useState([])
 
     setHeading('')
     setDetails('')     
-    
+    }
   }
   return (
     <div id="main" className='w-full md:flex-row  flex flex-col'>
@@ -38,17 +41,20 @@ const [note, setNote] = useState([])
       onChange={(e)=>{
         setDetails(e.target.value)
       }}></textarea>
-      <button className='bg-blue-500 mx-4 rounded-2xl py-1 px-4 '>Add</button>
+      <button className='bg-blue-500 mx-4 rounded-2xl py-1 px-4 active:scale-95'>Add</button>
     </form>
 
     <div className='text-amber-500 p-4 md:max-w-1/2'>
       <h2  className='text-center font-bold text-2xl'>Your Notes:</h2>
-      <div className='mt-4 flex w-full flex-wrap justify-start items-start gap-2'>
+      <div className='mt-4 flex w-full flex-wrap justify-start items-start  gap-2'>
         {note.map((elem,idx)=>{
-          return <div key={idx} className='bg-green-200 py-2 px-3 pt-5  h-52 w-40 
-          rounded-2xl'>
-            <h3 className='text-2xl bold text-black '>{elem.heading}:</h3>
-            <p className='text-green-500 mt-2'>{elem.details}</p>  
+          return <div key={idx} className='bg-green-200  relative h-52 w-47
+          rounded-2xl '>
+            <img className='  overflow-hidden h-full w-full rounded-2xl' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoJrVQ0wfvx5D2VwBRYH8HBUNVv7rx5Xtf18At-6u8mQ&s=10" alt="" />
+            <div className='px-3 py-4 absolute top-0 left-0'>
+            <h3 className='text-2xl font-bold  text-black  '>{elem.heading}:</h3>
+            <p className='text-blue-800 mt-2'>{elem.details}</p>  
+            </div>
           </div>
 
         })}
