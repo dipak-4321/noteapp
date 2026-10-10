@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Trash } from 'lucide-react';
 
 const Page = () => {
 const [heading, setHeading] = useState('')
@@ -51,9 +52,11 @@ const [note, setNote] = useState([])
           return <div key={idx} className='bg-green-200  relative h-52 w-47
           rounded-2xl '>
             <img className='  overflow-hidden h-full w-full rounded-2xl' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoJrVQ0wfvx5D2VwBRYH8HBUNVv7rx5Xtf18At-6u8mQ&s=10" alt="" />
-            <div className='px-3 py-4 absolute top-0 left-0'>
-            <h3 className='text-2xl font-bold  text-black  '>{elem.heading}:</h3>
+            <div className='px-3 py-2 absolute top-0 left-0 '>
+              <div className='bg-gray-400  p-1 mb-1  rounded-full h-8 w-8 relative left-33 right-0'><Trash className='active:scale-90' size={25} color="#80002d" strokeWidth={0.75} /></div>
+            <h3 className='text-2xl font-bold  text-fuchsia-700  '>{elem.heading}</h3>
             <p className='text-blue-950 mt-2'>{elem.details}</p>  
+            
             </div>
           </div>
 
