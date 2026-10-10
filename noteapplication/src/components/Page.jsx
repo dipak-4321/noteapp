@@ -53,7 +53,7 @@ const [note, setNote] = useState([])
             <img className='  overflow-hidden h-full w-full rounded-2xl' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoJrVQ0wfvx5D2VwBRYH8HBUNVv7rx5Xtf18At-6u8mQ&s=10" alt="" />
             <div className='px-3 py-4 absolute top-0 left-0'>
             <h3 className='text-2xl font-bold  text-black  '>{elem.heading}:</h3>
-            <p className='text-blue-800 mt-2'>{elem.details}</p>  
+            <p className='text-blue-950 mt-2'>{elem.details}</p>  
             </div>
           </div>
 
