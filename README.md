@@ -92,7 +92,7 @@ This project was created to practice React fundamentals, including components, s
 
 **Your Name**
 
-GitHub: [[Your GitHub Profile](YOUR_GITHUB_PROFILE_URL)](https://github.com/dipak-4321)
+GitHub: https://github.com/dipak-4321
 
 ## 📄 License
 
