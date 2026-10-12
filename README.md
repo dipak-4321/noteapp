@@ -45,7 +45,6 @@ The application stores notes so they remain available after refreshing the page 
 
 If implemented using `localStorage`, the notes are saved in the browser and loaded again when the application opens.
 
-**Note:** Browser storage is local to the browser and device; it does not automatically synchronize notes across different devices.
 
 ## 📂 Project Structure
 
@@ -66,7 +65,7 @@ noteapp/
 └── README.md
 ```
 
-*Note: This is an example folder structure. Update it to match your actual project files.*
+
 
 ## ⚙️ Installation and Setup
 
