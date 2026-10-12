@@ -10,6 +10,7 @@ A simple and responsive Note Application built using **React.js and Vite**. This
 * Delete notes when they are no longer needed.
 * Simple and user-friendly interface.
 * Fast development and build process using Vite.
+* 🎨 Tailwind CSS – Creates modern and responsive designs using utility classes.
 
 ## 🛠️ Technologies Used
 
@@ -18,6 +19,7 @@ A simple and responsive Note Application built using **React.js and Vite**. This
 * **JavaScript** – For application functionality.
 * **CSS** – For styling the application.
 * **HTML** – For structuring the content.
+* Tailwind CSS – Styling and responsive layouts.
 
 ## 📸 Project Preview
 
