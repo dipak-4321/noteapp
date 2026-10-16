@@ -1,10 +1,19 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Trash } from 'lucide-react';
+import { use } from 'react';
 
 const Page = () => {
 const [heading, setHeading] = useState('')
 const [details, setDetails] = useState('')
-const [note, setNote] = useState([])
+const [note, setNote] = useState( ()=>{
+  const savedNotes = localStorage.getItem('notes')
+  if(savedNotes !== null){
+    return JSON.parse(savedNotes)
+  }
+  else{
+    return []
+  }
+})
 
   function formSubmit (e){
     e.preventDefault()
@@ -21,11 +30,28 @@ const [note, setNote] = useState([])
     console.log(note);
 
     setHeading('')
-    setDetails('')     
+    setDetails('')
+    
+  
+    
     }
   }
+  useEffect(()=>{
+        localStorage.setItem('notes',JSON.stringify(note))
+  },[note])
+  // function showData(){
+  //     const head = JSON.parse(localStorage.getItem(heading))
+  //     const detail = JSON.parse(localStorage.getItem(details))
+  //     setNote({head,detail})
+  //     console.log(note)
+  // }
+  // useEffect(()=>{
+  //   localStorage.setItem(heading,details)
+  // },[note])
+
   return (
     <div id="main" className='w-full md:flex-row  flex flex-col'>
+      
 
     <form className='flex flex-col  gap-4 p-4 md:w-1/2 min-h-screen  text-white' action="" 
     onSubmit={(e)=>{
@@ -48,6 +74,7 @@ const [note, setNote] = useState([])
     <div className='text-amber-500 p-4 md:max-w-1/2'>
       <h2  className='text-center font-bold text-2xl'>Your Notes:</h2>
       <div className='mt-4 flex w-full flex-wrap justify-start items-start  gap-2'>
+
         {note.map((elem,idx)=>{
           return <div key={idx} className='bg-green-200  relative h-52 w-47
           rounded-2xl '>
