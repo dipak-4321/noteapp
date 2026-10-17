@@ -21,7 +21,6 @@ const [note, setNote] = useState( ()=>{
       alert("Please Fill the required filled")
     }else {
     
-
     console.log("form submited")
     const copyNote = [...note]
     copyNote.push({heading,details})
@@ -37,6 +36,7 @@ const [note, setNote] = useState( ()=>{
     }
   }
   useEffect(()=>{
+    localStorage.clear()
         localStorage.setItem('notes',JSON.stringify(note))
   },[note])
   // function showData(){
@@ -48,10 +48,15 @@ const [note, setNote] = useState( ()=>{
   // useEffect(()=>{
   //   localStorage.setItem(heading,details)
   // },[note])
+  const deleteNotes = (index)=>{
+    const savedNotes = note.filter((elem,idx)=>{
+      return idx !== index
+    })
+  setNote(savedNotes)
 
+  }
   return (
     <div id="main" className='w-full md:flex-row  flex flex-col'>
-      
 
     <form className='flex flex-col  gap-4 p-4 md:w-1/2 min-h-screen  text-white' action="" 
     onSubmit={(e)=>{
@@ -68,7 +73,7 @@ const [note, setNote] = useState( ()=>{
       onChange={(e)=>{
         setDetails(e.target.value)
       }}></textarea>
-      <button className='bg-blue-500 mx-4 rounded-2xl py-1 px-4 active:scale-95'>Add</button>
+      <button className='bg-blue-500 mx-4 rounded-2xl py-1 px-4 cursor-pointer active:scale-95'>Add</button>
     </form>
 
     <div className='text-amber-500 p-4 md:max-w-1/2'>
@@ -76,13 +81,17 @@ const [note, setNote] = useState( ()=>{
       <div className='mt-4 flex w-full flex-wrap justify-start items-start  gap-2'>
 
         {note.map((elem,idx)=>{
-          return <div key={idx} className='bg-green-200  relative h-52 w-47
+          return <div key={idx} className='bg-green-200  relative h-52 w-47 overflow-hidden
           rounded-2xl '>
             <img className='  overflow-hidden h-full w-full rounded-2xl' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoJrVQ0wfvx5D2VwBRYH8HBUNVv7rx5Xtf18At-6u8mQ&s=10" alt="" />
             <div className='px-3 py-2 absolute top-0 left-0 '>
-              <div className='bg-gray-400  p-1 mb-1  rounded-full h-8 w-8 relative left-33 right-0'><Trash className='active:scale-90' size={25} color="#80002d" strokeWidth={0.75} /></div>
-            <h3 className='text-2xl font-bold  text-fuchsia-700  '>{elem.heading}</h3>
-            <p className='text-blue-950 mt-2'>{elem.details}</p>  
+              <div className='bg-red-200 cursor-pointer  p-1 mb-1  rounded-full h-8 w-8 relative left-33 right-0' onClick={()=>{
+                deleteNotes(idx)
+              }}>
+                <Trash className='active:scale-90' size={25} color="#80002d" strokeWidth={0.75} />
+                </div>
+                  <h3 className='text-2xl font-bold  text-fuchsia-700'>{elem.heading}</h3>
+                  <p className='text-blue-950 mt-2'>{elem.details}</p>  
             
             </div>
           </div>
